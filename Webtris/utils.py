@@ -6,16 +6,23 @@ import contextily as ctx
 import plotly.express as px
 
 
+# Utility functions for working with the midas sites
+
+
 def plot_report(df_report: pd.DataFrame) -> None:
     """
     Plot time series of the report dataframe obtained from Webtris API
+    df_report is assumed to have the same columns as returned by 
+    the Webtris.sites() function
     """
     _, ax = plt.subplots(figsize=(15, 4))
     sns.lineplot(data=df_report, x="time", y="Total Volume", hue="Site Name")
-    ax.set_title(df_report["Site Name"].values[0], fontsize=18)
     ax.set_xlabel("Time", fontsize=16)
     ax.set_ylabel("Total Volume", fontsize=16)
     ax.tick_params(axis="both", labelsize=15)
+    ax.legend(frameon=False, bbox_to_anchor=(1, 1))
+    if len(df_report) == 1:
+        ax.set_title(df_report["Site Name"].values[0], fontsize=18)
 
 
 def show_sites(df_sites: pd.DataFrame, backend="geopandas") -> None:
