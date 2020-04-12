@@ -1,0 +1,9 @@
+geopandas
+pandas
+numpy
+descartes
+contextily==1.0rc2
+nb-black
+rtree
+beautifulsoup4
+seaborn==0.9
