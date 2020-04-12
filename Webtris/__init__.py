@@ -44,7 +44,7 @@ class MIDAS:
         # set CRS
         gdf_sites.crs = "epsg:4326"
         # convert to UK CRS
-        gdf_sites.to_crs("epsg:27700")
+        gdf_sites = gdf_sites.to_crs("epsg:27700")
 
         return gdf_sites
 
