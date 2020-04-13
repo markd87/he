@@ -80,7 +80,6 @@ class MIDAS:
             page += 1
             url = f"{self.base_url}/reports/Daily?sites={sites}&start_date={start}&end_date={end}&page={page}&page_size=100"
             res = requests.get(url)
-
         report_df = report_df.drop_duplicates(
             subset=["Site Name", "Report Date", "Time Period Ending"], keep="first",
         )
