@@ -4,7 +4,7 @@ import pandas as pd
 import geopandas as gpd
 import contextily as ctx
 import plotly.express as px
-
+import matplotlib
 
 # Utility functions for working with the midas sites
 
@@ -12,7 +12,7 @@ import plotly.express as px
 def plot_report(df_report: pd.DataFrame) -> None:
     """
     Plot time series of the report dataframe obtained from Webtris API
-    df_report is assumed to have the same columns as returned by 
+    df_report is assumed to have the same columns as returned by
     the Webtris.sites() function
     """
     _, ax = plt.subplots(figsize=(15, 4))
@@ -28,6 +28,8 @@ def plot_report(df_report: pd.DataFrame) -> None:
 def show_sites(df_sites: pd.DataFrame, backend="geopandas") -> None:
     """
     Show midas sites on a map
+    can use either static or mapbox map
+    for mapbox map requries Latitude and Longitude columns
     """
     if backend == "geopandas":
         if "geometry" in df_sites.columns:
@@ -49,5 +51,35 @@ def show_sites(df_sites: pd.DataFrame, backend="geopandas") -> None:
             width=1000,
             height=550,
             hover_data=["Name"],
+        )
+        fig.show()
+
+
+def plot_map(gdf, ax=None, backend="geopandas", **kwargs):
+    """
+    plot a geopandas data frame
+    returns the axis to allow overlaying additional 
+    layers
+    """
+    if backend == "geopandas":
+        if not ax:
+            _, ax = plt.subplots(figsize=(10, 10))
+        gdf.to_crs("epsg:3857").plot(ax=ax, **kwargs)
+        ax.grid(False)
+        ax.set_axis_off()
+        ctx.add_basemap(ax, url=ctx.providers.Stamen.TonerLite,reset_extent=False)
+        return ax
+
+    elif backend == "mapbox":
+        mapbox_access_token = open(".mapbox").read()
+        px.set_mapbox_access_token(mapbox_access_token)
+        fig = px.scatter_mapbox(
+            gdf.dropna(),
+            lat="Latitude",
+            lon="Longitude",
+            size_max=15,
+            zoom=10,
+            width=1000,
+            height=550,
         )
         fig.show()

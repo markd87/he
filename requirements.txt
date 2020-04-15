@@ -6,23 +6,22 @@
 #
 affine==2.3.0             # via rasterio
 appdirs==1.4.3            # via black
-appnope==0.1.0            # via ipython
 attrs==19.3.0             # via black, fiona, rasterio
 backcall==0.1.0           # via ipython
-beautifulsoup4==4.9.0     # via -r requirements.in
+beautifulsoup4==4.9.0
 black==19.10b0            # via nb-black
 certifi==2020.4.5.1       # via requests
 chardet==3.0.4            # via requests
 click-plugins==1.1.1      # via fiona, rasterio
 click==7.1.1              # via black, click-plugins, cligj, fiona, mercantile, rasterio
 cligj==0.5.0              # via fiona, rasterio
-contextily==1.0rc2        # via -r requirements.in
+contextily==1.0rc2
 cycler==0.10.0            # via matplotlib
 decorator==4.4.2          # via ipython, traitlets
-descartes==1.1.0          # via -r requirements.in
+descartes==1.1.0
 fiona==1.8.13.post1       # via geopandas
 geographiclib==1.50       # via geopy
-geopandas==0.7.0          # via -r requirements.in
+geopandas==0.7.0
 geopy==1.21.0             # via contextily
 idna==2.9                 # via requests
 ipython-genutils==0.2.0   # via traitlets
@@ -30,18 +29,20 @@ ipython==7.13.0           # via nb-black
 jedi==0.16.0              # via ipython
 joblib==0.14.1            # via contextily
 kiwisolver==1.2.0         # via matplotlib
+llvmlite==0.31.0          # via numba
 matplotlib==3.2.1         # via contextily, descartes, seaborn
 mercantile==1.1.2         # via contextily
 munch==2.5.0              # via fiona
-nb-black==1.0.7           # via -r requirements.in
-numpy==1.18.2             # via -r requirements.in, matplotlib, pandas, rasterio, scipy, seaborn, snuggs
-pandas==1.0.3             # via -r requirements.in, geopandas, seaborn
+nb-black==1.0.7
+numba==0.48.0
+numpy==1.18.2
+pandas==1.0.3
 parso==0.6.2              # via jedi
 pathspec==0.8.0           # via black
 pexpect==4.8.0            # via ipython
 pickleshare==0.7.5        # via ipython
 pillow==7.1.1             # via contextily
-plotly==4.6.0             # via -r requirements.in
+plotly==4.6.0
 prompt-toolkit==3.0.5     # via ipython
 ptyprocess==0.6.0         # via pexpect
 pygments==2.6.1           # via ipython
@@ -53,18 +54,19 @@ rasterio==1.1.3           # via contextily
 regex==2020.4.4           # via black
 requests==2.23.0          # via contextily
 retrying==1.3.3           # via plotly
-rtree==0.9.4              # via -r requirements.in
+rtree==0.9.4
 scipy==1.4.1              # via seaborn
-seaborn==0.9              # via -r requirements.in
+seaborn==0.9
 shapely==1.7.0            # via geopandas
 six==1.14.0               # via cycler, fiona, munch, plotly, python-dateutil, retrying, traitlets
 snuggs==1.4.7             # via rasterio
 soupsieve==2.0            # via beautifulsoup4
 toml==0.10.0              # via black
+tqdm==4.45.0
 traitlets==4.3.3          # via ipython
 typed-ast==1.4.1          # via black
 urllib3==1.25.8           # via requests
 wcwidth==0.1.9            # via prompt-toolkit
 
 # The following packages are considered to be unsafe in a requirements file:
-# setuptools
+# setuptools==46.1.3        # via ipython, numba, rtree
