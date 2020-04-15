@@ -9,4 +9,3 @@ beautifulsoup4
 seaborn==0.9
 plotly
 tqdm
-numba
